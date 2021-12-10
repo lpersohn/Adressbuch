@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,6 +29,15 @@ namespace Adressbuch
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             contactPage contactP = new();
+
+            contact c = new();
+
+            string con = Kennung.Text+";"+Vorname.Text+";"+Nachname.Text+";"+Geburtstag.Text+";"+Adresse.Text+";"+Wohnort.Text+";"+Postleitzahl.Text+";"+Telefon.Text+";"+Email.Text;
+
+            using (TextWriter sw = File.AppendText(c.path))
+            {
+                sw.WriteLine(con);
+            }
 
             addC.Content = contactP.Content;
         }

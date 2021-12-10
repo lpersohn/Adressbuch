@@ -17,9 +17,9 @@
             <ColumnDefinition Width="610"/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" Background="#FF03BDF3">
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" Background="#6FA8DC">
             <Label Content="Adressbuch" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="30" Margin="20,20,350,20"/>
-            <TextBox x:Name="searchName" Text="Suche..." HorizontalAlignment="Right" FontSize="12" Margin="20,20,0,20" Height="20" Width="200"/>
+            <TextBox x:Name="searchName" HorizontalAlignment="Right" FontSize="12" Margin="20,20,0,20" Height="20" Width="200"/>
             <Button x:Name="btnSearch" Content="Suchen" Height="20" Click="btnSearch_Click"/>
         </StackPanel>
 
@@ -32,7 +32,7 @@
             </ToolBar>
         </StackPanel>
 
-        <ListBox x:Name="contacts" Grid.Row="2" Grid.Column="0" Height="315"/>
+        <ListBox x:Name="contacts" Grid.Row="2" Grid.Column="0" Height="315" SelectionChanged="contacts_SelectionChanged"/>
 
         <ContentControl x:Name="main" Grid.Row="1" Grid.Column="1" Grid.RowSpan="2"/>
     </Grid>

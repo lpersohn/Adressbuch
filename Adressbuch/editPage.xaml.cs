@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,45 @@ namespace Adressbuch
         public editPage()
         {
             InitializeComponent();
+
+            MainWindow main = new();
+
+            string name = (string)main.contacts.SelectedItem;
+
+            string[] namesplit = name.Split('(', ')', ' ');
+
+            contact c = new();
+
+            using StreamReader sr = File.OpenText(c.path);
+            {
+                string line;
+
+                while ((line = sr.ReadLine()) != null)
+                {
+                    string[] lineteil = line.Split(';');
+
+                    if (lineteil[1] == namesplit[0])
+                    {
+                        NumorNN.Text = lineteil[0];
+
+                        Vorname.Text = lineteil[1];
+
+                        Nachname.Text = lineteil[2];
+
+                        Birthday.Text = lineteil[3];
+
+                        Adress.Text = lineteil[4];
+
+                        Wohnort.Text = lineteil[5];
+
+                        PLZ.Text = lineteil[6];
+
+                        Number.Text = lineteil[7];
+
+                        Email.Text = lineteil[8];
+                    }
+                }
+            }
         }
 
         private void btnAccept_Click(object sender, RoutedEventArgs e)

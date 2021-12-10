@@ -21,16 +21,16 @@
 
             <StackPanel Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Vertical">
                 <TextBlock Height="120" Text="Bild" Margin="0,5,0,0"/>
-                <Label Content="Adresse: Brandenburgerstraße 2a, 29646 Bispingen" Margin="0,10,0,0"/>
-                <Label Content="Telefon: 05173/8369683" Margin="0,10,0,0"/>
-                <Label Content="E-Mail: lukas.persohn@tsbw.cloud" Margin="0,10,0,0"/>
+                <Label x:Name="Adress" Content="Adresse" Margin="0,20,0,0"/>
+                <Label x:Name="Number" Content="Telefonnummer" Margin="0,10,0,0"/>
+                <Label x:Name="Email" Content="E-Mail-Adresse" Margin="0,10,0,0"/>
             </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Orientation="Vertical">
-            <Label Content="Hans Wurst" FontSize="30" Margin="0,20,0,0"/>
-            <Label Content="Mitarbeiter Nummer/Spitzname: 93457482" Margin="0,10,0,0"/>
-            <Label Content="Geburtstag: 09.01.2000"/>
-            <Button x:Name="btnEdit" Content="Bearbeiten" HorizontalAlignment="Right" Margin="0,180,10,0" Click="btnEdit_Click"/>
+            <Label x:Name="Name" Content="Vor- und Nachname" FontSize="30" Margin="0,20,0,0"/>
+            <Label x:Name="NumorNN" Content="Mitarbeiter Nummer/Spitzname" Margin="0,10,0,0"/>
+            <Label x:Name="Birthday" Content="Geburtstag" Margin="0,10,0,0"/>
+            <Button x:Name="btnEdit" Content="Bearbeiten" HorizontalAlignment="Right" Margin="0,170,10,0" Click="btnEdit_Click"/>
         </StackPanel>
     </Grid>
     </ContentControl>

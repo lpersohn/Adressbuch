@@ -21,27 +21,29 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Vertical">
-            <TextBlock Height="131" Text="Bild hinzufügen:"/>
+            <TextBlock Height="120" Text="Bild hinzufügen:"/>
             <Label Content="Adresse:"/>
-            <TextBox HorizontalAlignment="Left" Width="200"/>
-            <Label Content="Postleitzahl, Wohnort:"/>
-            <TextBox HorizontalAlignment="Left" Width="200"/>
+            <TextBox x:Name="Adress" HorizontalAlignment="Left" Width="200"/>
+            <Label Content="Postleitzahl:"/>
+            <TextBox x:Name="PLZ" HorizontalAlignment="Left" Width="200"/>
+            <Label Content="Wohnort:"/>
+            <TextBox x:Name="Wohnort" HorizontalAlignment="Left" Width="200"/>
             <Label Content="Telefon:"/>
-            <TextBox HorizontalAlignment="Left" Width="200"/>
+            <TextBox x:Name="Number" HorizontalAlignment="Left" Width="200"/>
             <Label Content="E-Mail*:"/>
-            <TextBox HorizontalAlignment="Left" Width="200"/>
+            <TextBox x:Name="Email" HorizontalAlignment="Left" Width="200"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Orientation="Vertical">
-            <Label Content="Vorname"/>
-            <TextBox HorizontalAlignment="Left" Width="200" Margin="5,0,0,0"/>
-            <Label Content="Nachname" Margin="5,0,0,0"/>
-            <TextBox HorizontalAlignment="Left" Width="200" Margin="5,0,0,0"/>
+            <StackPanel Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Orientation="Vertical">
             <Label Content="Spitzname oder Mitarbeiternummer:" Margin="5,0,0,0"/>
-            <TextBox HorizontalAlignment="Left" Width="200" Margin="5,0,0,0"/>
+            <TextBox x:Name="NumorNN" HorizontalAlignment="Left" Width="200" Margin="5,0,0,0"/>
+            <Label Content="Vorname:" Margin="5,0,0,0"/>
+            <TextBox x:Name="Vorname" HorizontalAlignment="Left" Width="200" Margin="5,0,0,0"/>
+            <Label Content="Nachname:" Margin="5,0,0,0"/>
+            <TextBox x:Name="Nachname" HorizontalAlignment="Left" Width="200" Margin="5,0,0,0"/>
             <Label Content="Geburtstag:" Margin="5,0,0,-0.7"/>
-            <TextBox HorizontalAlignment="Left" Width="200" Height="18" Margin="5,0,0,0"/>
-            <Button x:Name="btnAccept" Content="Bestätigen" HorizontalAlignment="Right" Margin="0,120,10,0" Width="62.5" Click="btnAccept_Click"/>
+            <DatePicker x:Name="Birthday" HorizontalAlignment="Left" Width="200" Height="25" Margin="5,0,0,0"/>
+            <Button x:Name="btnAccept" Content="Bestätigen" HorizontalAlignment="Right" Margin="0,115,10,0" Width="62.5" Click="btnAccept_Click"/>
             <Button x:Name="btnBreak" Content="Abbrechen" HorizontalAlignment="Right" Margin="0,5,10,0" Click="btnBreak_Click"/>
         </StackPanel>
     </Grid>

@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lupersohn\\source\\repos\\Adressbuch\\Adressbuch\\Adressbuch.csproj",
+      "projectUniqueName": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\source\\repos\\Adressbuch\\Adressbuch\\Adressbuch.csproj",
       "projectName": "Adressbuch",
-      "projectPath": "C:\\Users\\lupersohn\\source\\repos\\Adressbuch\\Adressbuch\\Adressbuch.csproj",
+      "projectPath": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\source\\repos\\Adressbuch\\Adressbuch\\Adressbuch.csproj",
       "packagesPath": "C:\\Users\\lupersohn\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\lupersohn\\source\\repos\\Adressbuch\\Adressbuch\\obj\\",
+      "outputPath": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\source\\repos\\Adressbuch\\Adressbuch\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
