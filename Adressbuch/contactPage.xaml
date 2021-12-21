@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Adressbuch.contactPage"
+﻿<UserControl x:Class="Adressbuch.ContactPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -20,7 +20,9 @@
             </Grid.ColumnDefinitions>
 
             <StackPanel Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Vertical">
-                <TextBlock Height="120" Text="Bild" Margin="0,5,0,0"/>
+                <TextBlock Height="120" Margin="30,15,0,0">
+                    <Image Source="/Bild.png" Height="120" IsEnabled="True"/>
+                </TextBlock>
                 <Label x:Name="Adress" Content="Adresse" Margin="0,20,0,0"/>
                 <Label x:Name="Number" Content="Telefonnummer" Margin="0,10,0,0"/>
                 <Label x:Name="Email" Content="E-Mail-Adresse" Margin="0,10,0,0"/>
@@ -28,9 +30,11 @@
 
         <StackPanel Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Orientation="Vertical">
             <Label x:Name="Name" Content="Vor- und Nachname" FontSize="30" Margin="0,20,0,0"/>
-            <Label x:Name="NumorNN" Content="Mitarbeiter Nummer/Spitzname" Margin="0,10,0,0"/>
+            <Label x:Name="NumOrNN" Content="Mitarbeiter Nummer/Spitzname" Margin="0,10,0,0"/>
             <Label x:Name="Birthday" Content="Geburtstag" Margin="0,10,0,0"/>
-            <Button x:Name="btnEdit" Content="Bearbeiten" HorizontalAlignment="Right" Margin="0,170,10,0" Click="btnEdit_Click"/>
+                <Button x:Name="btnEdit" HorizontalAlignment="Right" Margin="0,160,10,0" Click="BtnEdit_Click">
+                    <Image Source="/Bearbeiten.png" Height="35"/>
+                </Button>
         </StackPanel>
     </Grid>
     </ContentControl>

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Adressbuch
 {
-    internal class contact
+    internal class Contact
     {
-        public string path = "C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\source\\repos\\Adressbuch\\contacts.csv";
+        public string path = "..\\contacts.csv";
     }
 }

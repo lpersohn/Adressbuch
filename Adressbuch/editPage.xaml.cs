@@ -19,64 +19,117 @@ namespace Adressbuch
     /// <summary>
     /// Interaktionslogik für editPage.xaml
     /// </summary>
-    public partial class editPage : UserControl
+    public partial class EditPage : UserControl
     {
-        public editPage()
+        public EditPage()
         {
             InitializeComponent();
+        }
+
+        private void BtnAccept_Click(object sender, RoutedEventArgs e)
+        {
+            List<string[]> contacts = new();
+
+            ContactPage contactP = new();
 
             MainWindow main = new();
 
-            string name = (string)main.contacts.SelectedItem;
+            Contact c = new();
 
-            string[] namesplit = name.Split('(', ')', ' ');
+            int counter = 0;
 
-            contact c = new();
+            string contact = NumorNN.Text + ";" + Vorname.Text + ";" + Nachname.Text + ";" + Birthday.Text + ";" + Adress.Text + ";" + Wohnort.Text + ";" + PLZ.Text + ";" + Number.Text + ";" + Email.Text;
 
-            using StreamReader sr = File.OpenText(c.path);
+            string[] cont = contact.Split(';');
+
+            using StreamReader str = File.OpenText(c.path);
             {
                 string line;
 
-                while ((line = sr.ReadLine()) != null)
+                while ((line = str.ReadLine()) != null)
                 {
-                    string[] lineteil = line.Split(';');
+                    string[] data = line.Split(';');
 
-                    if (lineteil[1] == namesplit[0])
+                    contacts.Add(data);
+
+                    counter++;
+                }
+
+                for (int i = 0; i < counter; i++)
+                {
+                    if (contacts[i][0] == NumorNN.Text)
                     {
-                        NumorNN.Text = lineteil[0];
-
-                        Vorname.Text = lineteil[1];
-
-                        Nachname.Text = lineteil[2];
-
-                        Birthday.Text = lineteil[3];
-
-                        Adress.Text = lineteil[4];
-
-                        Wohnort.Text = lineteil[5];
-
-                        PLZ.Text = lineteil[6];
-
-                        Number.Text = lineteil[7];
-
-                        Email.Text = lineteil[8];
+                        contacts[i] = cont;
                     }
                 }
             }
-        }
 
-        private void btnAccept_Click(object sender, RoutedEventArgs e)
-        {
-            contactPage contactP = new();
+            str.Close();
+
+            using StreamWriter sw = new(c.path);
+            {
+                foreach (string[] con in contacts)
+                {
+                    sw.WriteLine(con[0] + ";" + con[1] + ";" + con[2] + ";" + con[3] + ";" + con[4] + ";" + con[5] + ";" + con[6] + ";" + con[7] + ";" + con[8]);
+                }
+            }
+
+            sw.Close();
+
+            main.contactList.SelectedItem = null;
 
             editP.Content = contactP.Content;
+
+            using StreamReader sr = File.OpenText(c.path);
+            {
+                string lines = sr.ReadLine();
+
+                string[] datas = lines.Split(';');
+
+                contactP.Name.Content = datas[1] + " " + datas[2];
+
+                contactP.NumOrNN.Content = "Mitarbeiternummer oder Spitzname: " + datas[0];
+
+                contactP.Birthday.Content = "Geburtstag: " + datas[3];
+
+                contactP.Adress.Content = datas[4] + "," + datas[6] + "," + datas[5];
+
+                contactP.Number.Content = "Telefonnummer: " + datas[7];
+
+                contactP.Email.Content = "E-Mail-Adresse: " + datas[8];
+            }
         }
 
-        private void btnBreak_Click(object sender, RoutedEventArgs e)
+        private void BtnBreak_Click(object sender, RoutedEventArgs e)
         {
-            contactPage contactP = new();
+            MainWindow main = new();
+
+            ContactPage contactP = new();
+
+            Contact c = new();
+
+            main.contactList.SelectedItem = null;
 
             editP.Content = contactP.Content;
+
+            using StreamReader sr = File.OpenText(c.path);
+            {
+                string lines = sr.ReadLine();
+
+                string[] data = lines.Split(';');
+
+                contactP.Name.Content = data[1] + " " + data[2];
+
+                contactP.NumOrNN.Content = "Mitarbeiternummer oder Spitzname: " + data[0];
+
+                contactP.Birthday.Content = "Geburtstag: " + data[3];
+
+                contactP.Adress.Content = data[4] + "," + data[6] + "," + data[5];
+
+                contactP.Number.Content = "Telefonnummer: " + data[7];
+
+                contactP.Email.Content = "E-Mail-Adresse: " + data[8];
+            }
         }
     }
 }

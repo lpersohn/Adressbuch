@@ -19,20 +19,28 @@
 
         <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" Background="#6FA8DC">
             <Label Content="Adressbuch" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="30" Margin="20,20,350,20"/>
-            <TextBox x:Name="searchName" HorizontalAlignment="Right" FontSize="12" Margin="20,20,0,20" Height="20" Width="200"/>
-            <Button x:Name="btnSearch" Content="Suchen" Height="20" Click="btnSearch_Click"/>
+            <TextBox x:Name="searchName" HorizontalAlignment="Right" FontSize="12" Margin="20,20,0,20" Height="20" Width="200" TouchEnter="SearchName_TouchEnter" />
+            <Button x:Name="btnSearch" Content="Suchen" Height="20" Click="BtnSearch_Click"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" Orientation="Horizontal" HorizontalAlignment="Right">
+        <StackPanel Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" Orientation="Horizontal" HorizontalAlignment="Left">
             <ToolBar VerticalAlignment="Top">
-                <Button Content="Kalender" Click="btnCalender_Click"/>
-                <Button Content="Kontakte" Click="btnContacts_Click"/>
-                <Button Content="Hinzufügen" Click="btnAdd_Click"/>
-                <Button Content="Löschen" Click="btnDelete_Click"/>
+                <Button x:Name="Kalender" Click="BtnCalender_Click" ToolTip="Zu Kalender wechseln">
+                    <Image Source="/kalender.png" Height="35"/>
+                </Button>
+                <Button x:Name="Kontaktliste" Click="BtnContacts_Click" ToolTip="Zu Kontakte wechseln">
+                    <Image Source="/Kontakte.png" Height="35" Margin="15,0,0,0"/>
+                </Button>
+                <Button x:Name="Hinzufügen" Click="BtnAdd_Click" ToolTip="Neuen Kontakt hinzufügen">
+                    <Image Source="/Hinzufügen.png" Height="35" Margin="15,0,0,0"/>
+                </Button>
+                <Button x:Name="Löschen" Click="BtnDelete_Click" ToolTip="Ausgewählten Kontakt löschen">
+                    <Image Source="/Löschen.png" Height="35" Margin="15,0,0,0"/>
+                </Button>
             </ToolBar>
         </StackPanel>
 
-        <ListBox x:Name="contacts" Grid.Row="2" Grid.Column="0" Height="315" SelectionChanged="contacts_SelectionChanged"/>
+        <ListBox x:Name="contactList" Grid.Row="2" Grid.Column="0" Height="315" SelectionChanged="Contacts_SelectionChanged" />
 
         <ContentControl x:Name="main" Grid.Row="1" Grid.Column="1" Grid.RowSpan="2"/>
     </Grid>

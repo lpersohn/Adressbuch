@@ -58,3 +58,9 @@ C:\Program Files\Microsoft Visual Studio\2022\Professional\source\repos\Adressbu
 C:\Program Files\Microsoft Visual Studio\2022\Professional\source\repos\Adressbuch\Adressbuch\obj\Debug\net5.0-windows\ref\Adressbuch.dll
 C:\Program Files\Microsoft Visual Studio\2022\Professional\source\repos\Adressbuch\Adressbuch\obj\Debug\net5.0-windows\Adressbuch.pdb
 C:\Program Files\Microsoft Visual Studio\2022\Professional\source\repos\Adressbuch\Adressbuch\obj\Debug\net5.0-windows\Adressbuch.genruntimeconfig.cache
+C:\Program Files\Microsoft Visual Studio\2022\Professional\source\repos\Adressbuch\Adressbuch\bin\Debug\net5.0-windows\Microsoft.Win32.SystemEvents.dll
+C:\Program Files\Microsoft Visual Studio\2022\Professional\source\repos\Adressbuch\Adressbuch\bin\Debug\net5.0-windows\System.Drawing.Common.dll
+C:\Program Files\Microsoft Visual Studio\2022\Professional\source\repos\Adressbuch\Adressbuch\bin\Debug\net5.0-windows\runtimes\win\lib\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
+C:\Program Files\Microsoft Visual Studio\2022\Professional\source\repos\Adressbuch\Adressbuch\bin\Debug\net5.0-windows\runtimes\unix\lib\netcoreapp3.1\System.Drawing.Common.dll
+C:\Program Files\Microsoft Visual Studio\2022\Professional\source\repos\Adressbuch\Adressbuch\bin\Debug\net5.0-windows\runtimes\win\lib\netcoreapp3.1\System.Drawing.Common.dll
+C:\Program Files\Microsoft Visual Studio\2022\Professional\source\repos\Adressbuch\Adressbuch\obj\Debug\net5.0-windows\Adressbuch.csproj.CopyComplete

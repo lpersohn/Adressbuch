@@ -24,17 +24,17 @@ namespace Adressbuch
     /// </summary>
     public partial class MainWindow : Window
     {
+        public string data;
+
         public MainWindow()
         {
             InitializeComponent();
 
-            calender cal = new();
+            Calender cal = new();
 
-            contacts.Items.Clear();
+            Contact c = new();
 
             main.Content = cal;
-
-            contact c = new();
 
             using StreamReader sr = File.OpenText(c.path);
             {
@@ -42,76 +42,131 @@ namespace Adressbuch
 
                 while ((line = sr.ReadLine()) != null)
                 {
-                    string[] lineteil = line.Split(';');
+                    string[] data = line.Split(';');
 
-                    contacts.Items.Add(lineteil[1] + " " + lineteil[2] + "(" + lineteil[3] + ")");
+                    contactList.Items.Add(data[1] + " " + data[2] + "(" + data[3] + ")");
                 }
             }
+
+            contactList.Items.SortDescriptions.Add(new SortDescription("", ListSortDirection.Ascending));
         }
 
-        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            addContact add = new addContact();
+            AddContact add = new();
 
             main.Content = add;
         }
 
-        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Möchten Sie wirklich diesen Kontakt löschen", "Kontakt löschen", MessageBoxButton.YesNo);
+            var Result = MessageBox.Show("Möchten Sie wirklich den ausgewählten Kontakt löschen?", "Kontakt löschen?", MessageBoxButton.YesNo);
+
+            if (Result == MessageBoxResult.Yes)
+            {
+                List<string[]> contacts = new();
+
+                Contact c = new();
+
+                int counter = 0;
+
+                using StreamReader sr = File.OpenText(c.path);
+                {
+                    string line;
+
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        string[] data = line.Split(';');
+
+                        contacts.Add(data);
+
+                        counter++;
+                    }
+
+                    for (int i = 0; i < counter;)
+                    {
+                        if (contacts[i][0] == data)
+                        {
+                            contacts.RemoveAt(i);
+
+                            counter--;
+                        }
+                        else
+                        {
+                            i++;
+                        }
+                    }
+
+                    sr.Close();
+
+                    using StreamWriter sw = new(c.path);
+                    {
+                        foreach (string[] con in contacts)
+                        {
+                            sw.WriteLine(con[0] + ";" + con[1] + ";" + con[2] + ";" + con[3] + ";" + con[4] + ";" + con[5] + ";" + con[6] + ";" + con[7] + ";" + con[8]);
+                        }
+                    }
+
+                    sw.Close();
+                }
+
+                MessageBox.Show("Der Kontakt wurde gelöscht", "Kontakt gelöscht!", MessageBoxButton.OK);
+            }
         }
 
-        private void btnContacts_Click(object sender, RoutedEventArgs e)
+        private void BtnContacts_Click(object sender, RoutedEventArgs e)
         {
-            contacts.Items.Clear();
+            ContactPage contactP = new();
 
-            contactPage contactP = new();
+            Contact c = new();
 
-            contact c = new();
+            main.Content = contactP.contactP;
 
-            main.Content = contactP;
+            contactList.Items.Clear();
 
             using StreamReader sr = File.OpenText(c.path);
             {
                 string line;
 
-                while ((line= sr.ReadLine()) != null)
+                while ((line = sr.ReadLine()) != null)
                 {
-                    string[] lineteil = line.Split(';');
+                    string[] data = line.Split(';');
 
-                    contacts.Items.Add(lineteil[1] + " " + lineteil[2] +"(" + lineteil[0] + ")");
+                    contactList.Items.Add(data[1] + " " + data[2] + "(" + data[0] + ")");
                 }
 
                 using StreamReader tr = File.OpenText(c.path);
                 {
                     string lines = tr.ReadLine();
 
-                    string[] lineteil = lines.Split(';');
+                    string[] data = lines.Split(';');
 
-                    contactP.Name.Content = lineteil[1] + " " + lineteil[2];
-                                
-                    contactP.NumorNN.Content = "Mitarbeiternummer oder Spitzname: " + lineteil[0];
+                    contactP.Name.Content = data[1] + " " + data[2];
 
-                    contactP.Birthday.Content = "Geburtstag: " + lineteil[3];
+                    contactP.NumOrNN.Content = data[0];
 
-                    contactP.Adress.Content = lineteil[4] + "," + lineteil[6] + "," + lineteil[5];
+                    contactP.Birthday.Content = "Geburtstag: " + data[3];
 
-                    contactP.Number.Content = "Telefonnummer: " + lineteil[7];
+                    contactP.Adress.Content = data[4] + "," + data[6] + "," + data[5];
 
-                    contactP.Email.Content = "E-Mail-Adresse: " + lineteil[8];
+                    contactP.Number.Content = "Telefonnummer: " + data[7];
+
+                    contactP.Email.Content = "E-Mail-Adresse: " + data[8];
                 }
             }
+
+            contactList.Items.SortDescriptions.Add(new SortDescription("", ListSortDirection.Ascending));
         }
 
-        private void btnCalender_Click(object sender, RoutedEventArgs e)
+        private void BtnCalender_Click(object sender, RoutedEventArgs e)
         {
-            calender cal = new();
+            Calender cal = new();
 
-            contacts.Items.Clear();
+            contactList.Items.Clear();
 
             main.Content = cal;
 
-            contact c = new();
+            Contact c = new();
 
             using StreamReader sr = File.OpenText(c.path);
             {
@@ -119,18 +174,18 @@ namespace Adressbuch
 
                 while ((line = sr.ReadLine()) != null)
                 {
-                    string[] lineteil = line.Split(';');
+                    string[] data = line.Split(';');
 
-                    contacts.Items.Add(lineteil[1] + " " + lineteil[2] + "(" + lineteil[3] + ")");
+                    contactList.Items.Add(data[1] + " " + data[2] + "(" + data[3] + ")");
                 }
             }
         }
 
-        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        private void BtnSearch_Click(object sender, RoutedEventArgs e)
         {
-            contacts.Items.Clear();
+            contactList.Items.Clear();
 
-            contact c = new();
+            Contact c = new();
 
             using StreamReader sr = File.OpenText(c.path);
             {
@@ -138,27 +193,27 @@ namespace Adressbuch
 
                 while ((line = sr.ReadLine()) != null)
                 {
-                    string[] lineteil = line.Split(';');
+                    string[] data = line.Split(';');
 
-                    if (lineteil[1] == searchName.Text || lineteil[2] == searchName.Text)
+                    if (data[0].ToLower() == searchName.Text.ToLower() || data[1].ToLower() == searchName.Text.ToLower() || data[2].ToLower() == searchName.Text.ToLower() || data[3] == searchName.Text || data[4].ToLower() == searchName.Text.ToLower() || data[5].ToLower() == searchName.Text.ToLower() || data[6] == searchName.Text || data[7] == searchName.Text || data[8].ToLower() == searchName.Text.ToLower())
                     {
-                        contacts.Items.Add(lineteil[1] + " " + lineteil[2] + "(" + lineteil[0] + ")");
+                        contactList.Items.Add(data[1] + " " + data[2] + "(" + data[0] + ")");
+                    }
+                    else if (searchName.Text == "")
+                    {
+                        contactList.Items.Add(data[1] + " " + data[2] + "(" + data[0] + ")");
                     }
                 }
             }
+
+            contactList.Items.SortDescriptions.Add(new SortDescription("", ListSortDirection.Ascending));
         }
 
-        private void contacts_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void SearchName_TouchEnter(object sender, TouchEventArgs e)
         {
-            contact c = new();
+            contactList.Items.Clear();
 
-            string name = (string)contacts.SelectedItem;
-
-            string[] namesplit = name.Split('(', ')', ' ');
-
-            contactPage contactP = new();
-
-            main.Content = contactP;
+            Contact c = new();
 
             using StreamReader sr = File.OpenText(c.path);
             {
@@ -166,25 +221,65 @@ namespace Adressbuch
 
                 while ((line = sr.ReadLine()) != null)
                 {
-                    string[] lineteil = line.Split(';');
+                    string[] data = line.Split(';');
 
-                    if (lineteil[0] == namesplit[2] || lineteil[3] == namesplit[2])
+                    if (data[0].ToLower() == searchName.Text.ToLower() || data[1].ToLower() == searchName.Text.ToLower() || data[2].ToLower() == searchName.Text.ToLower() || data[3] == searchName.Text || data[4].ToLower() == searchName.Text.ToLower() || data[5].ToLower() == searchName.Text.ToLower() || data[6] == searchName.Text || data[7] == searchName.Text || data[8].ToLower() == searchName.Text.ToLower())
                     {
-                        contactP.Name.Content = lineteil[1] + " " + lineteil[2];
-
-                        contactP.NumorNN.Content = "Mitarbeiternummer oder Spitzname: "+lineteil[0];
-
-                        contactP.Birthday.Content = "Geburtstag: "+lineteil[3];
-
-                        contactP.Adress.Content = lineteil[4] + "," + lineteil[6] + "," + lineteil[5];
-
-                        contactP.Number.Content = "Telefonnummer: "+lineteil[7];
-
-                        contactP.Email.Content = "E-Mail-Adresse: "+lineteil[8];
+                        contactList.Items.Add(data[1] + " " + data[2] + "(" + data[0] + ")");
+                    }
+                    else if (searchName.Text == "")
+                    {
+                        contactList.Items.Add(data[1] + " " + data[2] + "(" + data[0] + ")");
                     }
                 }
             }
 
+            contactList.Items.SortDescriptions.Add(new SortDescription("", ListSortDirection.Ascending));
+        }
+
+        private void Contacts_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Contact c = new();
+
+            ContactPage contactP = new();
+
+            if (contactList.SelectedItem != null)
+            {
+                string name = (string)contactList.SelectedItem;
+
+                string[] dataSplit = name.Split('(', ')', ' ');
+
+                main.Content = contactP;
+
+                using StreamReader sr = File.OpenText(c.path);
+                {
+                    string line;
+
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        string[] contact = line.Split(';');
+
+                        if (contact[0] == dataSplit[2] || contact[3] == dataSplit[2])
+                        {
+                            contactP.Name.Content = contact[1] + " " + contact[2];
+
+                            contactP.NumOrNN.Content = contact[0];
+
+                            contactP.Birthday.Content = "Geburtstag: " + contact[3];
+
+                            contactP.Adress.Content = contact[4] + "," + contact[6] + "," + contact[5];
+
+                            contactP.Number.Content = "Telefonnummer: " + contact[7];
+
+                            contactP.Email.Content = "E-Mail-Adresse: " + contact[8];
+
+                            data = contact[0];
+                        }
+                    }
+                }
+
+                contactList.Items.SortDescriptions.Add(new SortDescription("", ListSortDirection.Ascending));
+            }
         }
     }
 }

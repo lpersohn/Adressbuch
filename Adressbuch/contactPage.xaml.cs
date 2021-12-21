@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,18 +19,51 @@ namespace Adressbuch
     /// <summary>
     /// Interaktionslogik für contactPage.xaml
     /// </summary>
-    public partial class contactPage : UserControl
+    public partial class ContactPage : UserControl
     {
-        public contactPage()
+        public ContactPage()
         {
             InitializeComponent();
         }
 
-        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-            editPage editP = new editPage();
+            Contact c = new();
 
-            contactP.Content = editP;
+            EditPage editP = new();
+
+            contactP.Content = editP.Content;
+
+            using StreamReader sr = File.OpenText(c.path);
+            {
+                string data;
+
+                while ((data = sr.ReadLine()) != null)
+                {
+                    string[] dataSplit = data.Split(';');
+
+                    if ((string)NumOrNN.Content == dataSplit[0])
+                    {
+                        editP.NumorNN.Text = dataSplit[0];
+
+                        editP.Vorname.Text = dataSplit[1];
+
+                        editP.Nachname.Text = dataSplit[2];
+
+                        editP.Birthday.Text = dataSplit[3];
+
+                        editP.Adress.Text = dataSplit[4];
+
+                        editP.Wohnort.Text = dataSplit[5];
+
+                        editP.PLZ.Text = dataSplit[6];
+
+                        editP.Number.Text = dataSplit[7];
+
+                        editP.Email.Text = dataSplit[8];
+                    }
+                }
+            }
         }
     }
 }

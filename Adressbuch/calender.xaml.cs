@@ -19,9 +19,9 @@ namespace Adressbuch
     /// <summary>
     /// Interaktionslogik für calender.xaml
     /// </summary>
-    public partial class calender : UserControl
+    public partial class Calender : UserControl
     {
-        public calender()
+        public Calender()
         {
             InitializeComponent();
         }

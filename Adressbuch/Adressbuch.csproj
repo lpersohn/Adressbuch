@@ -6,4 +6,26 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Bearbeiten.png" />
+    <None Remove="Bild.png" />
+    <None Remove="Hinzufügen.png" />
+    <None Remove="kalender.png" />
+    <None Remove="Kontakte.png" />
+    <None Remove="Löschen.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Bearbeiten.png" />
+    <Resource Include="Bild.png" />
+    <Resource Include="Hinzufügen.png" />
+    <Resource Include="kalender.png" />
+    <Resource Include="Kontakte.png" />
+    <Resource Include="Löschen.png" />
+  </ItemGroup>
+
 </Project>
