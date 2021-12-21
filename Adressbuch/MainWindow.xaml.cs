@@ -259,7 +259,25 @@ namespace Adressbuch
                     {
                         string[] contact = line.Split(';');
 
-                        if (contact[0] == dataSplit[2] || contact[3] == dataSplit[2])
+                        if (contact[0] == dataSplit[2])
+                        {
+                            contactP.Name.Content = contact[1] + " " + contact[2];
+
+                            contactP.NumOrNN.Content = contact[0];
+
+                            contactP.Birthday.Content = "Geburtstag: " + contact[3];
+
+                            contactP.Adress.Content = contact[4] + "," + contact[6] + "," + contact[5];
+
+                            contactP.Number.Content = "Telefonnummer: " + contact[7];
+
+                            contactP.Email.Content = "E-Mail-Adresse: " + contact[8];
+
+                            data = contact[0];
+
+                            contactList.Items.SortDescriptions.Add(new SortDescription("", ListSortDirection.Ascending));
+                        }
+                        else if (contact[3] == dataSplit[2])
                         {
                             contactP.Name.Content = contact[1] + " " + contact[2];
 
@@ -277,8 +295,6 @@ namespace Adressbuch
                         }
                     }
                 }
-
-                contactList.Items.SortDescriptions.Add(new SortDescription("", ListSortDirection.Ascending));
             }
         }
     }
