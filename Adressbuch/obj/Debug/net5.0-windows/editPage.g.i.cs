@@ -149,7 +149,7 @@ namespace Adressbuch {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Adressbuch;component/editpage.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Adressbuch;V1.0.0.0;component/editpage.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\editPage.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

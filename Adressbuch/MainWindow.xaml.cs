@@ -135,9 +135,9 @@ namespace Adressbuch
                     contactList.Items.Add(data[1] + " " + data[2] + "(" + data[0] + ")");
                 }
 
-                using StreamReader tr = File.OpenText(c.path);
+                using StreamReader str = File.OpenText(c.path);
                 {
-                    string lines = tr.ReadLine();
+                    string lines = str.ReadLine();
 
                     string[] data = lines.Split(';');
 
